@@ -1,0 +1,46 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Ayodeji O
+	email = 97124713+aosasona@users.noreply.github.com
+	signingKey = 8523063C
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[credential]
+	username = aosasona
+
+[core]
+	excludesfile = /Users/ayodeji/.gitignore
+	editor = vim
+  pager = delta
+
+[commit]
+	gpgSign = true
+
+[push]
+	default = current
+
+[tag]
+	gpgSign = true
+
+[init]
+	defaultBranch = master
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[gpg]
+	program = /opt/homebrew/bin/gpg

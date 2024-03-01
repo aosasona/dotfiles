@@ -1,0 +1,152 @@
+# User configuration
+
+export TERM="xterm-256color"
+
+export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export PATH=~/.npm-global/bin:$PATH
+
+export PATH="/usr/local/mysql/bin:$PATH"
+
+export PATH="$HOME/go/bin:$PATH"
+
+# Alias for python
+alias pip=/usr/local/bin/pip3
+alias python=/usr/local/bin/python3
+
+# neovim
+alias vi='nvim'
+alias vim='nvim'
+export EDITOR='nvim'
+
+# gpg
+export GPG_TTY=$(tty)
+gpgconf --launch gpg-agent
+
+alias thio-one='ssh trulyao@thio.local'
+
+alias sail='./vendor/bin/sail'
+
+# Personal
+export PERSONAL="~/personal"
+alias personal="cd ${PERSONAL}/$1";
+
+export WORK="~/work"
+alias work="cd ${WORK}/$1";
+
+function createComponent() {
+  dir=$(pwd)
+  target_dir="$dir/src/components/$1"
+
+  mkdir "$target_dir" && \
+  touch "$target_dir/index.tsx" && \
+  echo "export default function $1() {
+    return (
+      <></>
+    )
+}" >> "$target_dir/index.tsx"
+
+  echo "Created TSX component: $1"
+}
+
+alias ntsx=createComponent;
+
+alias rb='eval "$(rbenv init - zsh)" && rbenv' 
+
+function set_title() {
+  wezterm cli set-tab-title "$1"
+}
+
+alias st=set_title;
+
+export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
+
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# pnpm
+export PNPM_HOME="/Users/ayodeji/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "/Users/ayodeji/.bun/_bun" ] && source "/Users/ayodeji/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Poetry
+export PATH="/Users/ayodeji/.local/bin:$PATH"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/ayodeji/Library/Application Support/Herd/bin/":$PATH
+export PHP_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/":$PHP_INI_SCAN_DIR
+
+# Turso
+export PATH="/Users/ayodeji/.turso:$PATH"
+
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/83/"
+
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/82/"
+
+
+# Herd injected PHP 7.4 configuration.
+export HERD_PHP_74_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/74/"
+
+# Java
+export JAVA_HOME=`/usr/libexec/java_home -v 21`
+
+# Add glas to PATH
+export PATH="$HOME/personal/glas_bin/release:$PATH"
+
+[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
+
+export PATH=~/Library/Android/sdk/tools:$PATH
+export PATH=~/Library/Android/sdk/platform-tools:$PATH
+
+# Aliases
+#
+alias cat='bat'
+alias ls='eza'
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# Init starship
+eval "$(starship init zsh)"
