@@ -15,7 +15,7 @@
 
 [core]
 	excludesfile = /Users/ayodeji/.gitignore
-	editor = vim
+	editor = nvim
   pager = delta
 
 [commit]
@@ -23,6 +23,10 @@
 
 [push]
 	default = current
+
+[pull]
+	autoSetupRemote = true
+	ff = only
 
 [tag]
 	gpgSign = true
@@ -40,7 +44,14 @@
 [merge]
     conflictstyle = diff3
 
+[rebase]
+	autosquash = true
+
 [diff]
     colorMoved = default
 [gpg]
 	program = /opt/homebrew/bin/gpg
+
+[alias]
+	recent = log -n 8 --date='format:%d/%m at %H:%M' --pretty='format:%Cred%h%Creset %Cgreen(%an %ad)%Creset %s'
+	find-commit = !"f() { git rev-list -1 --before="$2" ${1-master}; }; f"
