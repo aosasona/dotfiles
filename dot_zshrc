@@ -29,16 +29,24 @@ alias thio-one='ssh trulyao@thio.local'
 
 alias sail='./vendor/bin/sail'
 
-# Personal
-export PERSONAL="~/personal"
+# A bunch of navigation "aliases"
+export PERSONAL_DIR="$HOME/personal"
 function personal() {
-  cd ${PERSONAL}/$1
+  cd ${PERSONAL_DIR}/$1
 }
+alias per=personal
 
-export WORK="~/work"
+export WORK_DIR="$HOME/work"
 function work() {
-  cd ${WORK}/$1
+  cd ${WORK_DIR}/$1
 }
+alias wrk=work
+
+export SCHOOL_DIR="$HOME/school"
+function school() {
+  cd ${SCHOOL_DIR}/$1
+}
+alias sch=school
 
 alias rb='eval "$(rbenv init - zsh)" && rbenv' 
 
