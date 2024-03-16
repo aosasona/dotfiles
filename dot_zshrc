@@ -12,6 +12,9 @@ export PATH="/usr/local/mysql/bin:$PATH"
 
 export PATH="$HOME/go/bin:$PATH"
 
+export PATH="$(composer config -g home)/vendor/bin:$PATH"
+
+
 # Alias for python
 alias pip=/usr/local/bin/pip3
 alias python=/usr/local/bin/python3
@@ -143,7 +146,13 @@ alias ls='eza'
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
-source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
 # Init starship
 eval "$(starship init zsh)"
+
+source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# Mise
+MISE_PATH=$(which mise)
+if [ -x "$MISE_PATH" ]; then
+  eval "$(mise activate zsh)"
+fi
