@@ -28,6 +28,7 @@ config.font_size = 11
 config.line_height = 1.175
 -- config.freetype_load_target = "Light"
 config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
+-- config.font = wezterm.font("CommitMono", { weight = "Regular" })
 -- config.font = wezterm.font("SFMono Nerd Font"), -- preferred
 -- config.font = wezterm.font("DankMono Nerd Font Mono") -- awesome,
 -- config.font = wezterm.font("JetBrainsMono Nerd Font") -- fine
