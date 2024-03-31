@@ -204,6 +204,18 @@ config.keys = {
 			mode = "Activate",
 		}),
 	},
+
+	-- Change font size
+	{
+		key = "+",
+		mods = "CMD",
+		action = act.IncreaseFontSize,
+	},
+	{
+		key = "-",
+		mods = "CMD",
+		action = act.DecreaseFontSize,
+	},
 }
 
 return config
