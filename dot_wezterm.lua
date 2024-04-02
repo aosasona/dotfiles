@@ -216,6 +216,13 @@ config.keys = {
 		mods = "CMD",
 		action = act.DecreaseFontSize,
 	},
+
+	-- Command palette
+	{
+		key = "k",
+		mods = "CMD",
+		action = act.ActivateCommandPalette,
+	},
 }
 
 return config
