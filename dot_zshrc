@@ -28,7 +28,8 @@ export EDITOR='nvim'
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
 
-alias thio-one='ssh trulyao@thio.local'
+alias thio-one-local='ssh trulyao@thio.local'
+alias thio-one='ssh trulyao@thio'
 
 alias sail='./vendor/bin/sail'
 
@@ -156,3 +157,5 @@ MISE_PATH=$(which mise)
 if [ -x "$MISE_PATH" ]; then
   eval "$(mise activate zsh)"
 fi
+
+eval "$(atuin init zsh --disable-up-arrow)"
