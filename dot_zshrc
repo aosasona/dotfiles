@@ -1,5 +1,39 @@
 # User configuration
 
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=500000
+SAVEHIST=500000
+
+# Immediately append to history file
+setopt INC_APPEND_HISTORY
+
+# Record timestamp
+setopt EXTENDED_HISTORY
+
+# Expire duplicate entries first
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# Ignore duplicates
+setopt HIST_IGNORE_DUPS
+
+# Delete old entry if new entry is a duplicate
+setopt HIST_IGNORE_ALL_DUPS
+
+# Do not display a aline previously found
+setopt HIST_FIND_NO_DUPS
+
+# Do not store a line starting with a space in the history
+setopt HIST_IGNORE_SPACE
+
+# Do not save duplicate to the history file
+setopt HIST_SAVE_NO_DUPS
+
+# Share history between sessions
+setopt SHARE_HISTORY
+
+
+
 export TERM="xterm-256color"
 
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
@@ -13,6 +47,16 @@ export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 export PATH="$(composer config -g home)/vendor/bin:$PATH"
+
+export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/ayodeji/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 
 # Alias for python
@@ -60,7 +104,6 @@ function set_title() {
 
 alias st=set_title;
 
-export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
 
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -87,13 +130,6 @@ export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# pnpm
-export PNPM_HOME="/Users/ayodeji/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # bun completions
 [ -s "/Users/ayodeji/.bun/_bun" ] && source "/Users/ayodeji/.bun/_bun"
