@@ -50,6 +50,9 @@ export PATH="$(composer config -g home)/vendor/bin:$PATH"
 
 export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
 
+# DOTNET root using homebrew
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+
 # pnpm
 export PNPM_HOME="/Users/ayodeji/Library/pnpm"
 case ":$PATH:" in
