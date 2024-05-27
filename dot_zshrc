@@ -170,6 +170,9 @@ export JAVA_HOME=`/usr/libexec/java_home -v 21`
 # Add glas to PATH
 export PATH="$HOME/personal/glas_bin/release:$PATH"
 
+# Add zellij config path
+export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
+
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 
 export PATH=~/Library/Android/sdk/tools:$PATH
