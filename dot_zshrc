@@ -1,3 +1,4 @@
+
 # User configuration
 
 # History
@@ -73,7 +74,7 @@ export EDITOR='nvim'
 
 # gpg
 export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
+# gpgconf --launch gpg-agent
 
 alias thio-one-local='ssh trulyao@thio.local'
 alias thio-one='ssh trulyao@thio'
@@ -178,10 +179,13 @@ export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 export PATH=~/Library/Android/sdk/tools:$PATH
 export PATH=~/Library/Android/sdk/platform-tools:$PATH
 
-export PATH="$(brew --prefix llvm@15)/bin:$PATH"
+export PATH="$(brew --prefix llvm@16)/bin:$PATH"
+export LIBRARY_PATH="$(brew --prefix llvm@15)/lib:$(brew --prefix zstd)/lib"
+
+# Inko
+export PATH="$HOME/Library/Application Support/ivm/bin:$PATH"
 
 # Aliases
-#
 alias cat='bat'
 alias ls='eza'
 
