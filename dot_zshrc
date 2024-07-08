@@ -206,3 +206,4 @@ fi
 
 eval "$(atuin init zsh --disable-up-arrow)"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+PQ_LIB_DIR="$(brew --prefix libpq)/lib"
