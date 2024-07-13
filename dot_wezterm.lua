@@ -50,6 +50,9 @@ config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.hide_tab_bar_if_only_one_tab = true
 
 ------- Keybindings -------
+---
+---
+---
 --
 ---- LEADER => C-a
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
@@ -73,6 +76,20 @@ config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
 --
 -- Some of these keybindings are remapped to use Zellij's mappings since Zellij does not support using the CMD key as a modifier
 config.keys = {
+	-- Special mappings to keep keys that require composed option working on MacOS
+	-- EURO
+	{
+		key = "2",
+		mods = "ALT",
+		action = act.SendKey({ key = "€" }),
+	},
+	-- Hash
+	{
+		key = "3",
+		mods = "ALT",
+		action = act.SendKey({ key = "#" }),
+	},
+
 	{
 		key = "f",
 		mods = "LEADER",
@@ -88,10 +105,7 @@ config.keys = {
 	{
 		key = "t",
 		mods = "CMD",
-		action = act.SendKey({
-			key = "N",
-			mods = "ALT",
-		}),
+		action = act.SendKey({ key = "N", mods = "ALT" }),
 	},
 	-- {
 	-- 	key = "T",
