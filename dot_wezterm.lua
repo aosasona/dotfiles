@@ -4,7 +4,6 @@ local act = wezterm.action
 local config = {}
 
 -- From fasterthanlime/dotfiles (https://github.com/fasterthanlime/dotfiles/blob/main/.wezterm.lua)
-
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
@@ -39,15 +38,13 @@ config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
 -- config.font = wezterm.font("Fira Code", { stretch = "Normal", weight = "Regular" })
 -- config.font = wezterm.font("Operator Mono Lig", { weight = 325 })
 
-config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_left_alt_is_pressed = false
 config.send_composed_key_when_right_alt_is_pressed = true
 config.disable_default_key_bindings = true
 
 -- Window settings
 config.default_cursor_style = "SteadyBlock"
 config.color_scheme = "GruvboxDarkHard"
--- config.color_scheme = "Gruvbox dark, hard (base16)"
--- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.native_macos_fullscreen_mode = true
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.hide_tab_bar_if_only_one_tab = true
@@ -73,10 +70,12 @@ config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
 -- OPTION + SHIFT + H,J,K,L => Resize active pane
 -- OPTION + h,j,k,l => Switch active pane
 -- OPTION + w => Close current pane
+--
+-- Some of these keybindings are remapped to use Zellij's mappings since Zellij does not support using the CMD key as a modifier
 config.keys = {
 	{
-		key = "n",
-		mods = "ALT",
+		key = "f",
+		mods = "LEADER",
 		action = wezterm.action.ToggleFullScreen,
 	},
 	-- Reload config
@@ -85,17 +84,20 @@ config.keys = {
 		mods = "LEADER",
 		action = act.ReloadConfiguration,
 	},
-	-- Create new tab
+	-- Create new tab - remapped to use Zellij's mapping
 	{
 		key = "t",
 		mods = "CMD",
-		action = act.SpawnTab("CurrentPaneDomain"),
+		action = act.SendKey({
+			key = "N",
+			mods = "ALT",
+		}),
 	},
-	{
-		key = "T",
-		mods = "CMD",
-		action = act.SpawnTab("DefaultDomain"),
-	},
+	-- {
+	-- 	key = "T",
+	-- 	mods = "CMD",
+	-- 	action = act.SpawnTab("DefaultDomain"),
+	-- },
 	-- Paste/Copy
 	{
 		key = "v",
@@ -112,91 +114,85 @@ config.keys = {
 	{
 		key = "LeftArrow",
 		mods = "SUPER",
-		action = act.ActivateTabRelative(-1),
+		action = act.SendKey({
+			key = "H",
+			mods = "ALT",
+		}),
 	},
 	{
 		key = "RightArrow",
 		mods = "SUPER",
-		action = act.ActivateTabRelative(1),
+		action = act.SendKey({ key = "L", mods = "ALT" }),
 	},
 
 	-- Pane splitting mappings
 	{
 		key = "|",
 		mods = "LEADER",
-		action = act.SplitHorizontal({
-			domain = "CurrentPaneDomain",
-		}),
+		action = act.SendKey({ key = "|", mods = "ALT" }),
 	},
 	{
 		key = "_",
 		mods = "LEADER",
-		action = act.SplitVertical({
-			domain = "CurrentPaneDomain",
-		}),
+		action = act.SendKey({ key = "_", mods = "ALT" }),
 	},
 
 	-- Pane size adjustment mappings
-	{
-		key = "H",
-		mods = "ALT",
-		action = act.AdjustPaneSize({ "Left", 5 }),
-	},
-	{
-		key = "L",
-		mods = "ALT",
-		action = act.AdjustPaneSize({ "Right", 5 }),
-	},
-	{
-		key = "K",
-		mods = "ALT",
-		action = act.AdjustPaneSize({ "Up", 5 }),
-	},
-	{
-		key = "J",
-		mods = "ALT",
-		action = act.AdjustPaneSize({ "Down", 5 }),
-	},
+	-- {
+	-- 	key = "H",
+	-- 	mods = "ALT",
+	-- 	action = act.AdjustPaneSize({ "Left", 5 }),
+	-- },
+	-- {
+	-- 	key = "L",
+	-- 	mods = "ALT",
+	-- 	action = act.AdjustPaneSize({ "Right", 5 }),
+	-- },
+	-- {
+	-- 	key = "K",
+	-- 	mods = "ALT",
+	-- 	action = act.AdjustPaneSize({ "Up", 5 }),
+	-- },
+	-- {
+	-- 	key = "J",
+	-- 	mods = "ALT",
+	-- 	action = act.AdjustPaneSize({ "Down", 5 }),
+	-- },
 
 	-- Pane switching mappings
-	{
-		key = "h",
-		mods = "ALT",
-		action = act.ActivatePaneDirection("Left"),
-	},
-	{
-		key = "l",
-		mods = "ALT",
-		action = act.ActivatePaneDirection("Right"),
-	},
-	{
-		key = "k",
-		mods = "ALT",
-		action = act.ActivatePaneDirection("Up"),
-	},
-	{
-		key = "j",
-		mods = "ALT",
-		action = act.ActivatePaneDirection("Down"),
-	},
-	{
-		key = "w",
-		mods = "ALT",
-		action = act.CloseCurrentPane({ confirm = true }),
-	},
+	-- {
+	-- 	key = "h",
+	-- 	mods = "ALT",
+	-- 	action = act.ActivatePaneDirection("Left"),
+	-- },
+	-- {
+	-- 	key = "l",
+	-- 	mods = "ALT",
+	-- 	action = act.ActivatePaneDirection("Right"),
+	-- },
+	-- {
+	-- 	key = "k",
+	-- 	mods = "ALT",
+	-- 	action = act.ActivatePaneDirection("Up"),
+	-- },
+	-- {
+	-- 	key = "j",
+	-- 	mods = "ALT",
+	-- 	action = act.ActivatePaneDirection("Down"),
+	-- },
 
 	-- Move tab mapping
 	{
 		key = "]",
 		mods = "ALT",
-		action = act.MoveTabRelative(1),
+		action = act.SendKey({ key = "o", mods = "ALT" }),
 	},
 	{
 		key = "[",
 		mods = "ALT",
-		action = act.MoveTabRelative(-1),
+		action = act.SendKey({ key = "i", mods = "ALT" }),
 	},
-
+	--
 	-- Show pane selector
 	{
 		key = "`",
