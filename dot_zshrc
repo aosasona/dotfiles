@@ -1,5 +1,4 @@
-
-# User configuration
+# === User configuration === #
 
 # History
 HISTFILE=~/.zsh_history
@@ -21,7 +20,7 @@ setopt HIST_IGNORE_DUPS
 # Delete old entry if new entry is a duplicate
 setopt HIST_IGNORE_ALL_DUPS
 
-# Do not display a aline previously found
+# Do not display a line previously found
 setopt HIST_FIND_NO_DUPS
 
 # Do not store a line starting with a space in the history
@@ -34,28 +33,33 @@ setopt HIST_SAVE_NO_DUPS
 setopt SHARE_HISTORY
 
 
-
 export TERM="xterm-256color"
-
-export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH=~/.npm-global/bin:$PATH
 
-export PATH="/usr/local/mysql/bin:$PATH"
-
 export PATH="$HOME/go/bin:$PATH"
 
 export PATH="$(composer config -g home)/vendor/bin:$PATH"
 
-export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
+# MySQL
+if [ -d "/usr/local/mysql" ]; then
+  export PATH="/usr/local/mysql/bin:$PATH"
+fi
+
+# PHPStorm
+if [ -d "/Applications/PhpStorm.app" ]; then
+  export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
+fi
 
 # DOTNET root using homebrew
-export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+if [ -d "/opt/homebrew/opt/dotnet" ]; then
+  export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+fi
 
 # pnpm
-export PNPM_HOME="/Users/ayodeji/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -64,41 +68,24 @@ esac
 
 
 # Alias for python
-alias pip=/usr/local/bin/pip3
-alias python=/usr/local/bin/python3
+if [ -x "$(command -v python3)" ]; then
+  alias python=python3
+fi
 
-# neovim
-alias vi='nvim'
-# alias vim='nvim'
+# Alias for pip
+if [ -x "$(command -v pip3)" ]; then
+  alias pip=pip3
+fi
+
+# Editor
 export EDITOR='nvim'
 
-# gpg
+# GPG
 export GPG_TTY=$(tty)
-# gpgconf --launch gpg-agent
 
-alias thio-one-local='ssh trulyao@thio.local'
-alias thio-one='ssh trulyao@thio'
-
-alias sail='./vendor/bin/sail'
-
-# A bunch of navigation "aliases"
-export PERSONAL_DIR="$HOME/personal"
-function personal() {
-  cd ${PERSONAL_DIR}/$1
-}
-alias per=personal
-
-export WORK_DIR="$HOME/work"
-function work() {
-  cd ${WORK_DIR}/$1
-}
-alias wrk=work
-
-export SCHOOL_DIR="$HOME/school"
-function school() {
-  cd ${SCHOOL_DIR}/$1
-}
-alias sch=school
+alias thio-one-local='mosh trulyao@thio.local'
+alias thio-one='mosh trulyao@thio'
+alias ld1="mosh trulyao@ld1"
 
 alias rb='eval "$(rbenv init - zsh)" && rbenv' 
 
@@ -115,83 +102,49 @@ alias st=set_title;
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 
 # bun completions
-[ -s "/Users/ayodeji/.bun/_bun" ] && source "/Users/ayodeji/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Poetry
-export PATH="/Users/ayodeji/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
-
-# Herd injected PHP binary.
-export PATH="/Users/ayodeji/Library/Application Support/Herd/bin/":$PATH
-export PHP_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/":$PHP_INI_SCAN_DIR
-
-# Turso
-export PATH="/Users/ayodeji/.turso:$PATH"
-
-
-# Herd injected PHP 8.3 configuration.
-export HERD_PHP_83_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/83/"
-
-
-# Herd injected PHP 8.2 configuration.
-export HERD_PHP_82_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/82/"
-
-
-# Herd injected PHP 7.4 configuration.
-export HERD_PHP_74_INI_SCAN_DIR="/Users/ayodeji/Library/Application Support/Herd/config/php/74/"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PQ_LIB_DIR="$(brew --prefix libpq)/lib"
 
 # Java
-export JAVA_HOME=`/usr/libexec/java_home -v 21`
-
-# Add glas to PATH
-export PATH="$HOME/personal/glas_bin/release:$PATH"
+export JAVA_HOME="/usr/libexec/java_home -v 21"
 
 # Add zellij config path
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 
-export PATH=~/Library/Android/sdk/tools:$PATH
-export PATH=~/Library/Android/sdk/platform-tools:$PATH
+if [ -d "$HOME/Library/Android/sdk" ]; then
+  export PATH="$HOME/Library/Android/sdk/tools:$PATH"
+  export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+fi
 
-export PATH="$(brew --prefix llvm@16)/bin:$PATH"
-# export LIBRARY_PATH="$(brew --prefix llvm@15)/lib:$(brew --prefix zstd)/lib"
+# export PATH="$(brew --prefix llvm@16)/bin:$PATH"
 
 # Inko
-export PATH="$HOME/Library/Application Support/ivm/bin:$PATH"
+if [ -d "$HOME/Library/Application Support/ivm" ]; then
+  export PATH="$HOME/Library/Application Support/ivm/bin:$PATH"
+fi
+
+eval "$(zoxide init zsh)"
 
 # Aliases
+alias cd='z'
 alias cat='bat'
 alias ls='eza'
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # Init starship
 eval "$(starship init zsh)"
@@ -205,5 +158,16 @@ if [ -x "$MISE_PATH" ]; then
 fi
 
 eval "$(atuin init zsh --disable-up-arrow)"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-PQ_LIB_DIR="$(brew --prefix libpq)/lib"
+
+# A bunch of navigation "aliases"
+export PERSONAL_DIR="$HOME/personal"
+function personal() { cd ${PERSONAL_DIR}/$1 }
+alias per=personal
+
+export WORK_DIR="$HOME/work"
+function work() { cd ${WORK_DIR}/$1 }
+alias wrk=work
+
+export SCHOOL_DIR="$HOME/school"
+function school() { cd ${SCHOOL_DIR}/$1 }
+alias sch=school
