@@ -23,10 +23,10 @@ config.check_for_updates = true
 config.show_update_window = true
 
 -- Font settings
-config.font_size = 11
-config.line_height = 1.125
+config.font_size = 11.25
+config.line_height = 1.175
 -- config.freetype_load_target = "Light"
--- config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
+config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
 -- config.font = wezterm.font("GeistMono Nerd Font Mono")
 -- config.font = wezterm.font("CommitMono", { weight = "Regular" })
 -- config.font = wezterm.font("SFMono Nerd Font") -- preferred
@@ -34,7 +34,7 @@ config.line_height = 1.125
 -- config.font = wezterm.font("JetBrainsMono Nerd Font") -- fine
 -- config.font = wezterm.font("Zed Mono") -- very nice, similar to Iosevka
 -- config.font = wezterm.font("Zed Mono", { stretch = "Expanded" })
-config.font = wezterm.font("BlexMono Nerd Font")
+-- config.font = wezterm.font("BlexMono Nerd Font")
 -- config.font = wezterm.font("Fira Code", { stretch = "Normal", weight = "Regular" })
 -- config.font = wezterm.font("Operator Mono Lig", { weight = 325 })
 
