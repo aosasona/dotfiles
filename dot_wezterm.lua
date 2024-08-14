@@ -18,6 +18,28 @@ if is_windows() then
 	config.default_prog = { "bash" }
 end
 
+local function map_pane_navigation(key, direction)
+	local direction_maps = {
+		Left = "h",
+		Right = "l",
+		Up = "k",
+		Down = "j",
+	}
+
+	if direction_maps[direction] == nil then
+		error("Invalid direction: " .. direction)
+	end
+
+	return {
+		key = key,
+		mods = "CTRL",
+		action = act.Multiple({
+			act.SendKey({ key = "w", mods = "CTRL" }),
+			act.SendKey({ key = direction_maps[direction] }),
+		}),
+	}
+end
+
 config.front_end = "WebGpu"
 config.check_for_updates = true
 config.show_update_window = true
@@ -107,12 +129,6 @@ config.keys = {
 		mods = "CMD",
 		action = act.SendKey({ key = "N", mods = "ALT" }),
 	},
-	-- {
-	-- 	key = "T",
-	-- 	mods = "CMD",
-	-- 	action = act.SpawnTab("DefaultDomain"),
-	-- },
-	-- Paste/Copy
 	{
 		key = "v",
 		mods = "CMD",
@@ -151,49 +167,11 @@ config.keys = {
 		action = act.SendKey({ key = "_", mods = "ALT" }),
 	},
 
-	-- Pane size adjustment mappings
-	-- {
-	-- 	key = "H",
-	-- 	mods = "ALT",
-	-- 	action = act.AdjustPaneSize({ "Left", 5 }),
-	-- },
-	-- {
-	-- 	key = "L",
-	-- 	mods = "ALT",
-	-- 	action = act.AdjustPaneSize({ "Right", 5 }),
-	-- },
-	-- {
-	-- 	key = "K",
-	-- 	mods = "ALT",
-	-- 	action = act.AdjustPaneSize({ "Up", 5 }),
-	-- },
-	-- {
-	-- 	key = "J",
-	-- 	mods = "ALT",
-	-- 	action = act.AdjustPaneSize({ "Down", 5 }),
-	-- },
-
-	-- Pane switching mappings
-	-- {
-	-- 	key = "h",
-	-- 	mods = "ALT",
-	-- 	action = act.ActivatePaneDirection("Left"),
-	-- },
-	-- {
-	-- 	key = "l",
-	-- 	mods = "ALT",
-	-- 	action = act.ActivatePaneDirection("Right"),
-	-- },
-	-- {
-	-- 	key = "k",
-	-- 	mods = "ALT",
-	-- 	action = act.ActivatePaneDirection("Up"),
-	-- },
-	-- {
-	-- 	key = "j",
-	-- 	mods = "ALT",
-	-- 	action = act.ActivatePaneDirection("Down"),
-	-- },
+	-- For Vim's split navigation
+	map_pane_navigation("h", "Left"),
+	map_pane_navigation("j", "Down"),
+	map_pane_navigation("k", "Up"),
+	map_pane_navigation("l", "Right"),
 
 	-- Move tab mapping
 	{
