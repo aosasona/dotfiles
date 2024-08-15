@@ -139,6 +139,8 @@ if [ -d "$HOME/Library/Application Support/ivm" ]; then
   export PATH="$HOME/Library/Application Support/ivm/bin:$PATH"
 fi
 
+[ -d "$HOME/.local/bin/c3" ] && export PATH="$HOME/.local/bin/c3:$PATH"
+
 eval "$(zoxide init zsh)"
 
 # Aliases
