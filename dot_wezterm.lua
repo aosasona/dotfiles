@@ -171,7 +171,7 @@ config.keys = {
 	map_pane_navigation("h", "Left"),
 	map_pane_navigation("j", "Down"),
 	map_pane_navigation("k", "Up"),
-	map_pane_navigation("l", "Right"),
+	-- map_pane_navigation("l", "Right"),
 
 	-- Move tab mapping
 	{
