@@ -47,8 +47,8 @@ config.show_update_window = true
 -- Font settings
 config.font_size = 11.25
 config.line_height = 1.175
--- config.freetype_load_target = "Light"
-config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
+-- config.font = wezterm.font("BerkeleyMono Nerd Font")
+config.font = wezterm.font("IosevkaTerm Nerd Font Mono") -- favorite
 -- config.font = wezterm.font("GeistMono Nerd Font Mono")
 -- config.font = wezterm.font("CommitMono", { weight = "Regular" })
 -- config.font = wezterm.font("SFMono Nerd Font") -- preferred
@@ -204,6 +204,11 @@ config.keys = {
 		key = "-",
 		mods = "CMD",
 		action = act.DecreaseFontSize,
+	},
+	{
+		key = "0",
+		mods = "CMD",
+		action = act.ResetFontSize,
 	},
 
 	-- Command palette
