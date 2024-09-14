@@ -217,16 +217,58 @@ config.keys = {
 		mods = "CMD",
 		action = act.ActivateCommandPalette,
 	},
+
+	-- Special mappings for Vim's window resizing
+	-- Increase width
+	{
+		key = "RightArrow",
+		mods = "CTRL|SHIFT",
+		action = act.Multiple({
+			act.SendKey({ key = "5" }),
+			act.SendKey({ key = "w", mods = "CTRL" }),
+			act.SendKey({ key = ">" }),
+		}),
+	},
+	-- Decrease width
+	{
+		key = "LeftArrow",
+		mods = "CTRL|SHIFT",
+		action = act.Multiple({
+			act.SendKey({ key = "5" }),
+			act.SendKey({ key = "w", mods = "CTRL" }),
+			act.SendKey({ key = "<" }),
+		}),
+	},
+	-- Increase height
+	{
+		key = "UpArrow",
+		mods = "CTRL|SHIFT",
+		action = act.Multiple({
+			act.SendKey({ key = "5" }),
+			act.SendKey({ key = "w", mods = "CTRL" }),
+			act.SendKey({ key = "+" }),
+		}),
+	},
+	-- Decrease height
+	{
+		key = "DownArrow",
+		mods = "CTRL|SHIFT",
+		action = act.Multiple({
+			act.SendKey({ key = "5" }),
+			act.SendKey({ key = "w", mods = "CTRL" }),
+			act.SendKey({ key = "-" }),
+		}),
+	},
 }
 
 -- SSH domains
 config.ssh_domains = {
 	{
 		-- This name identifies the domain
-		name = "playd-dev",
+		name = "ld1",
 		-- The hostname or address to connect to. Will be used to match settings
 		-- from your ssh config file
-		remote_address = "playd-dev",
+		remote_address = "ld1",
 		-- The username to use on the remote host
 		username = "trulyao",
 	},
