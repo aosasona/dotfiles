@@ -43,20 +43,6 @@ export PATH="$HOME/go/bin:$PATH"
 
 export PATH="$(composer config -g home)/vendor/bin:$PATH"
 
-# MySQL
-if [ -d "/usr/local/mysql" ]; then
-  export PATH="/usr/local/mysql/bin:$PATH"
-fi
-
-# PHPStorm
-if [ -d "/Applications/PhpStorm.app" ]; then
-  export PATH="/Applications/PhpStorm.app/Contents/MacOS:$PATH"
-fi
-
-# DOTNET root using homebrew
-if [ -d "/opt/homebrew/opt/dotnet" ]; then
-  export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
-fi
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -89,21 +75,9 @@ alias ld1="mosh trulyao@ld1"
 
 alias rb='eval "$(rbenv init - zsh)" && rbenv' 
 
-function set_title() {
+function st() {
   wezterm cli set-tab-title "$1"
 }
-
-alias st=set_title;
-
-
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 
 # bun completions
@@ -132,13 +106,12 @@ if [ -d "$HOME/Library/Android/sdk" ]; then
   export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 fi
 
-# export PATH="$(brew --prefix llvm@16)/bin:$PATH"
-
 # Inko
 if [ -d "$HOME/Library/Application Support/ivm" ]; then
   export PATH="$HOME/Library/Application Support/ivm/bin:$PATH"
 fi
 
+# C3
 [ -d "$HOME/.local/bin/c3" ] && export PATH="$HOME/.local/bin/c3:$PATH"
 
 eval "$(zoxide init zsh)"

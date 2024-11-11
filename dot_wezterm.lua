@@ -79,6 +79,8 @@ config.hide_tab_bar_if_only_one_tab = true
 ---- LEADER => C-a
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
 --
+-- NOTE: These are most likely out of sync by now since most of them pass through to Zellij
+--
 -- LEADER + r => reload configuration
 -- CMD + c,v => Copy, paste
 -- CMD + LeftArrow => Switch to left Tab
