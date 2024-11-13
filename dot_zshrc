@@ -156,4 +156,6 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
+. "$HOME/.cargo/env"
+
 eval "$(direnv hook zsh)"
