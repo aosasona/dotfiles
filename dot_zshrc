@@ -135,7 +135,7 @@ fi
 eval "$(atuin init zsh --disable-up-arrow)"
 
 # A bunch of navigation "aliases"
-export PERSONAL_DIR="$HOME/personal"
+export PERSONAL_DIR="$HOME/Developer"
 function personal() { cd ${PERSONAL_DIR}/$1 }
 alias per=personal
 
