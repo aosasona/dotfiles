@@ -135,6 +135,9 @@ fi
 
 eval "$(atuin init zsh --disable-up-arrow)"
 
+# V analyzer
+export PATH="$HOME/.config/v-analyzer/bin:$PATH"
+
 # A bunch of navigation "aliases"
 export PERSONAL_DIR="$HOME/Developer"
 function personal() { cd ${PERSONAL_DIR}/$1 }
