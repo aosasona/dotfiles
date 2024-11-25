@@ -115,6 +115,9 @@ fi
 # C3
 [ -d "$HOME/.local/bin/c3" ] && export PATH="$HOME/.local/bin/c3:$PATH"
 
+# SurrealDB
+export PATH="$HOME/.surrealdb:$PATH"
+
 eval "$(zoxide init zsh)"
 
 # Aliases
