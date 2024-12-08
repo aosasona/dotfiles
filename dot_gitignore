@@ -16,6 +16,7 @@ vendor
 
 # misc
 .env
+.envrc
 .env.local
 .env.development.local
 .env.test.local
