@@ -264,10 +264,19 @@ config.keys = {
 config.ssh_domains = {
 	{
 		-- This name identifies the domain
-		name = "ld1",
+		name = "ld1.remote",
 		-- The hostname or address to connect to. Will be used to match settings
 		-- from your ssh config file
 		remote_address = "ld1",
+		-- The username to use on the remote host
+		username = "trulyao",
+	},
+	{
+		-- This name identifies the domain
+		name = "ld1",
+		-- The hostname or address to connect to. Will be used to match settings
+		-- from your ssh config file
+		remote_address = "192.168.0.24",
 		-- The username to use on the remote host
 		username = "trulyao",
 	},
