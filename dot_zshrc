@@ -166,3 +166,6 @@ function yy() {
 . "$HOME/.cargo/env"
 
 eval "$(direnv hook zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ayodeji/.cache/lm-studio/bin"

@@ -45,7 +45,6 @@ config.check_for_updates = true
 config.show_update_window = true
 
 -- Font settings
--- config.font_size = 11.25
 config.font_size = 11.25
 config.line_height = 1.175
 config.font = wezterm.font("Zed Mono", { stretch = "Normal" })
