@@ -1,0 +1,42 @@
+[
+    {
+        "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+        "bindings": {
+            "space w": "workspace::Save",
+            "space e": "workspace::ToggleLeftDock",
+            "space t": "workspace::ToggleBottomDock",
+            "space /": "vim::ToggleComments",
+            "shift-l": "pane::ActivateNextItem",
+            "shift-h": "pane::ActivatePreviousItem",
+            "space c": "pane::CloseActiveItem",
+            "space ff": "file_finder::Toggle",
+            "+": "vim::Increment",
+            "-": "vim::Decrement"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == visual && !VimWaiting",
+        "bindings": {
+            "J": "editor::MoveLineDown",
+            "K": "editor::MoveLineUp",
+            "+": "vim::Increment",
+            "-": "vim::Decrement"
+        }
+    },
+    {
+        "context": "ProjectPanel",
+        "bindings": {
+            "escape": "workspace::ToggleLeftDock"
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "cmd-n": "workspace::NewTerminal",
+            "cmd-d": "pane::CloseActiveItem",
+            "cmd-t": "workspace::ToggleBottomDock",
+            "cmd-shift-f": "workspace::ToggleZoom",
+            "escape": "workspace::ToggleBottomDock"
+        }
+    }
+]
