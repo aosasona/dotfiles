@@ -103,7 +103,8 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PQ_LIB_DIR="$(brew --prefix libpq)/lib"
 
 # Java
-export JAVA_HOME="$(/usr/libexec/java_home -v 17)"
+export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
+export PATH="$JAVA_HOME/bin:$PATH"
 
 # Add zellij config path
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
@@ -111,8 +112,11 @@ export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 
 if [ -d "$HOME/Library/Android/sdk" ]; then
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
   export PATH="$HOME/Library/Android/sdk/tools:$PATH"
   export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+  export PATH="$HOME/Library/Android/sdk/emulator:$PATH"
+  export PATH="$HOME/Library/Android/sdk/tools/bin:$PATH"
 fi
 
 # Inko
@@ -195,3 +199,6 @@ unset __conda_setup
 
 # moonbit
 export PATH="$HOME/.moon/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
