@@ -62,9 +62,10 @@ config.disable_default_key_bindings = true
 
 -- Window settings
 config.default_cursor_style = "SteadyBlock"
+config.color_scheme = "Oxocarbon Dark (Gogh)"
 -- config.color_scheme = "GruvboxDarkHard"
 -- config.color_scheme = "Catppuccin Mocha (Gogh)"
-config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Catppuccin Mocha"
 config.native_macos_fullscreen_mode = true
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.hide_tab_bar_if_only_one_tab = true
