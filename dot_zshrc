@@ -182,3 +182,6 @@ function yy() {
 eval "$(direnv hook zsh)"
 
 # export PATH="$(brew --prefix ruby)/bin:$(brew --prefix)/lib/ruby/gems/3.4.4/bin:$PATH"
+
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
