@@ -23,9 +23,27 @@ macos-option-as-alt = left
 keybind = alt+2=text:€
 keybind = alt+3=text:#
 
+# Keybindings for navigation
 keybind = alt+left=unbind
 keybind = alt+right=unbind
-keybind = global:super+t=text:\x1bN # new tab
-keybind = global:super+n=text:\x1bn # new pane
-keybind = global:super+right=text:\x1bl # focus on right tab
-keybind = global:super+left=text:\x1bh # focus on left tab
+
+# New tab
+keybind = super+t=text:\x1bN
+# New pane
+keybind = super+n=text:\x1bn
+# Focus on right pane
+keybind = super+right=text:\x1bl
+# Focus on left pane
+keybind = super+left=text:\x1bh
+# Focus on top pane
+keybind = super+up=text:\x1bk
+# Focus on bottom pane
+keybind = super+down=text:\x1bj
+
+# Split pane horizontally
+keybind = ctrl+shift+-=text:\x1b_
+# Split pane vertically
+keybind = ctrl+shift+\=text:\x1b|
+
+# Vim bindings
+keybind = ctrl+h=unbind
