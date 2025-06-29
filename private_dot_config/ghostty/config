@@ -1,0 +1,27 @@
+#term = "xterm-256color"
+
+# background = 1b1a18
+
+# theme = GruvboxDarkHard 
+theme = Oxocarbon
+
+font-family = "IosevkaTerm Nerd Font Mono"
+# font-family = "GeistMono Nerd Font Mono"
+# font-family = "Zed Mono"
+# font-family = "BerkeleyMono Nerd Font"
+font-size = 12
+adjust-cell-height = 20%
+font-thicken = true
+
+window-padding-x = 0
+window-padding-y = 0
+
+
+macos-option-as-alt = left
+
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+keybind = global:super+t=text:\x1bN # new tab
+keybind = global:super+n=text:\x1bn # new pane
+keybind = global:super+right=text:\x1bl # focus on right tab
+keybind = global:super+left=text:\x1bh # focus on left tab
