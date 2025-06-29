@@ -20,6 +20,9 @@ window-padding-y = 0
 
 macos-option-as-alt = left
 
+keybind = alt+2=text:€
+keybind = alt+3=text:#
+
 keybind = alt+left=unbind
 keybind = alt+right=unbind
 keybind = global:super+t=text:\x1bN # new tab
