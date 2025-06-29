@@ -7,12 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    "assistant": {
-        "default_model": {
-            "provider": "ollama",
-            "model": "llama3.2:latest"
-        },
-        "version": "2"
+    "features": {
+        "edit_prediction_provider": "zed"
     },
     "languages": {
         "C++": {
@@ -32,9 +28,9 @@
     "default_dock_anchor": "bottom",
     "soft_wrap": "editor_width",
     // "buffer_font_family": "Operator Mono Lig",
-    // "buffer_font_family": "Zed Mono",
+    "buffer_font_family": "Zed Mono",
     // "buffer_font_family": "IosevkaTerm Nerd Font",
-    "buffer_font_family": "Berkeley Mono",
+    // "buffer_font_family": "Berkeley Mono",
     "formatter": "auto",
     "vim_mode": true,
     "tab_size": 4,

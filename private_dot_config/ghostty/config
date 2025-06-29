@@ -1,5 +1,4 @@
 #term = "xterm-256color"
-
 # background = 1b1a18
 
 # theme = GruvboxDarkHard 
@@ -7,9 +6,11 @@ theme = Oxocarbon
 
 font-family = "IosevkaTerm Nerd Font Mono"
 # font-family = "GeistMono Nerd Font Mono"
+# font-family = "GeistMono Nerd Font Mono"
 # font-family = "Zed Mono"
 # font-family = "BerkeleyMono Nerd Font"
-font-size = 12
+# font-family = "JetBrainsMono Nerd Font"
+font-size = 11
 adjust-cell-height = 20%
 font-thicken = true
 
