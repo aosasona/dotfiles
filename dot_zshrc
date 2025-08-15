@@ -105,8 +105,13 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PQ_LIB_DIR="$(brew --prefix libpq)/lib"
 
 # Java
-# export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
-# export PATH="$JAVA_HOME/bin:$PATH"
+ANDROID_STUDIO_JDK="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+if [ -d "$ANDROID_STUDIO_JDK" ]; then
+  export JAVA_HOME="$ANDROID_STUDIO_JDK"
+else
+  export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
+fi
+export PATH="$JAVA_HOME/bin:$PATH"
 
 # Add zellij config path
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
