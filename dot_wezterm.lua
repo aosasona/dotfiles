@@ -42,12 +42,12 @@ end
 
 config.front_end = "WebGpu"
 config.check_for_updates = true
-config.show_update_window = true
 
 -- Font settings
-config.font_size = 11.25
-config.line_height = 1.175
-config.font = wezterm.font("Zed Mono", { stretch = "Normal" })
+config.font_size = 12
+config.line_height = 1.275
+config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
+-- config.font = wezterm.font("Zed Mono", { stretch = "Normal" })
 -- config.font = wezterm.font("IosevkaTerm Nerd Font Mono", { stretch = "Normal" }) -- favorite
 -- config.font = wezterm.font("JetBrainsMono Nerd Font") -- fine
 -- config.font = wezterm.font("GeistMono Nerd Font Mono")

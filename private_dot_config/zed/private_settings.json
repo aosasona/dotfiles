@@ -10,14 +10,9 @@
     "features": {
         "edit_prediction_provider": "zed"
     },
-    "languages": {
-        "C++": {
-            "show_copilot_suggestions": true
-        }
-    },
-    "theme": "Fleet Dark",
+    "theme": "Carbonfox - blurred",
     "base_keymap": "JetBrains",
-    "buffer_font_size": 12,
+    "buffer_font_size": 13,
     "relative_line_numbers": true,
     "cursor_blink": false,
     "scrollbar": {
@@ -25,12 +20,14 @@
     },
     "format_on_save": "language_server",
     "autosave": "on_focus_change",
-    "default_dock_anchor": "bottom",
     "soft_wrap": "editor_width",
-    // "buffer_font_family": "Operator Mono Lig",
-    "buffer_font_family": "Zed Mono",
+    // "buffer_font_family": "Zed Mono",
     // "buffer_font_family": "IosevkaTerm Nerd Font",
     // "buffer_font_family": "Berkeley Mono",
+    // "buffer_font_family": "CommitMono Nerd Font Mono",
+    // "buffer_font_family": "DankMono Nerd Font Mono",
+    // "buffer_font_family": "GeistMono Nerd Font Mono",
+    "buffer_font_family": "Iosevka Term",
     "formatter": "auto",
     "vim_mode": true,
     "tab_size": 4,
