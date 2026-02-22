@@ -50,8 +50,18 @@
 [diff]
     colorMoved = default
 [gpg]
-	program = /opt/homebrew/bin/gpg
+	program = /usr/bin/gpg
 
 [alias]
-	recent = log -n 8 --date='format:%d/%m at %H:%M' --pretty='format:%Cred%h%Creset %Cgreen(%an %ad)%Creset %s'
+	recent = log -n 20 --date='format:%d/%m at %H:%M' --pretty='format:%Cred%h%Creset %Cgreen(%an %ad)%Creset %s'
+	amend = commit --amend --no-edit
 	find-commit = !"f() { git rev-list -1 --before="$2" ${1-master}; }; f"
+	pmr = push -o merge_request.create -o merge_request.target=develop
+	fixup = !"f() { git commit --fixup "$1" && git rebase -i "${1}~1"; }; f"
+	create = !"f() { git switch develop && git pull && git switch -c "$1"; }; f"
+	lg = log --graph --abbrev-commit --decorate --date=relative --all --pretty=format:'%C(bold blue)%h%Creset - %C(bold green)(%ar)%Creset %C(white)%s%Creset %C(dim white)- %an%Creset %C(bold yellow)%d%Creset'
+	dlog = -c diff.external=difft log --ext-diff
+	dshow = -c diff.external=difft show --ext-diff
+	ddiff = -c diff.external=difft diff
+	show-merged = !"f() { git branch --merged | rg -v '^\\*|develop'; }; f" ; requires ripgrep
+	clean-merged = !"f() { git branch --merged | rg -v '^\\*|develop' | xargs -r git branch -d; }; f" ; requires ripgrep and xargs available

@@ -101,22 +101,13 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Poetry
 export PATH="$HOME/.local/bin:$PATH"
 
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PQ_LIB_DIR="$(brew --prefix libpq)/lib"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
-# Java
-ANDROID_STUDIO_JDK="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
-if [ -d "$ANDROID_STUDIO_JDK" ]; then
-  export JAVA_HOME="$ANDROID_STUDIO_JDK"
-else
-  export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
-fi
-export PATH="$JAVA_HOME/bin:$PATH"
+# export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PQ_LIB_DIR="$(brew --prefix libpq)/lib"
 
 # Add zellij config path
 export ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
-
-[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 
 if [ -d "$HOME/Library/Android/sdk" ]; then
   export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -137,8 +128,8 @@ export PATH="$HOME/.surrealdb:$PATH"
 
 eval "$(zoxide init zsh)"
 
-# Aliases
 alias cd='z'
+# Aliases
 alias cat='bat'
 alias ls='eza'
 
@@ -163,7 +154,7 @@ fi
 export PATH="$HOME/.config/v-analyzer/bin:$PATH"
 
 # A bunch of navigation "aliases"
-export PERSONAL_DIR="$HOME/Developer"
+export PERSONAL_DIR="$HOME/projects"
 function personal() { cd ${PERSONAL_DIR}/$1 }
 alias per=personal
 
@@ -189,3 +180,4 @@ function yy() {
 eval "$(direnv hook zsh)"
 
 # export PATH="$(brew --prefix ruby)/bin:$(brew --prefix)/lib/ruby/gems/3.4.4/bin:$PATH"
+
