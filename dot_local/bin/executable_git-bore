@@ -1,0 +1,61 @@
+#!/bin/bash
+# .local/bin/git-bore
+# I apologize in advance for the crimes committed in this script.
+
+set -e;
+set -o pipefail;
+
+ARG_NUMBER=0;
+FLAG_VERBOSE=false;
+FLAG_LIST=false;
+FLAG_DRY_RUN=false;
+
+for arg in "$@"; do
+	if [[ "$arg" == "-v" ||  "$arg" == "--verbose"  ]]; then
+		FLAG_VERBOSE=true;
+	elif [[ "$arg" == "-l" ||  "$arg" == "--list"  ]]; then
+		FLAG_LIST=true;
+	elif [[ "$arg" == "-d" ||  "$arg" == "--dry-run"  ]]; then
+		FLAG_DRY_RUN=true;
+	elif [[ "$arg" =~ ^[0-9]+$ ]]; then
+		ARG_NUMBER=$arg;
+	fi;
+done;
+
+if [[ $ARG_NUMBER -le 0 ]]; then
+	ARG_NUMBER=1;
+fi;
+
+DEFAULT_LIMIT=10;
+if [[ $ARG_NUMBER -gt $DEFAULT_LIMIT ]]; then
+	if [[ $FLAG_VERBOSE == true ]]; then
+		echo -e "\x1b[33mWarning\x1b[0m: Limit exceeds default value of $DEFAULT_LIMIT. Using $DEFAULT_LIMIT instead.";
+	fi;
+	DEFAULT_LIMIT=$1; 
+fi;
+
+MESSAGES=$(git log -n $DEFAULT_LIMIT --pretty=format:%s);
+if [[ -z "$MESSAGES" ]]; then
+	echo -e "\x1b[31mError\x1b[0m: No commit messages found.";
+	exit 1;
+fi;
+
+if [[ $FLAG_LIST == true ]]; then
+	echo -e "\x1b[34mCommit messages\x1b[0m (limit: $DEFAULT_LIMIT):";
+	echo "$MESSAGES" | nl -w2 -s'. ';
+	exit 0;
+fi;
+
+COMMIT_MESSAGE=$(echo "$MESSAGES" | sed -n "${ARG_NUMBER:-1}p");
+if [[ -z "$COMMIT_MESSAGE" ]]; then
+	echo -e "\x1b[31mError\x1b[0m: No commit message found for the specified number.";
+	exit 1;
+fi;
+
+if [[ $FLAG_DRY_RUN == false ]]; then
+	echo "$COMMIT_MESSAGE" | bore;
+fi;
+
+if [[ $FLAG_VERBOSE == true ]]; then
+	echo -e "\x1b[32mCopied\x1b[0m: $COMMIT_MESSAGE";
+fi;
