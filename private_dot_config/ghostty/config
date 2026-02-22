@@ -5,14 +5,15 @@
 theme = Oxocarbon
 
 # font-family = "SFMono Nerd Font"
+# font-family = "Iosevka Nerd Font Mono"
 font-family = "IosevkaTerm Nerd Font Mono"
 # font-family = "GeistMono Nerd Font Mono"
 # font-family = "GeistMono Nerd Font Mono"
 # font-family = "Zed Mono"
 # font-family = "BerkeleyMono Nerd Font"
 # font-family = "JetBrainsMono Nerd Font"
-font-size = 10
-adjust-cell-height = 10%
+font-size = 9
+adjust-cell-height = 15%
 font-thicken = true
 
 window-padding-x = 0
