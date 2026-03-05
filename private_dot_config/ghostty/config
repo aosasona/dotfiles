@@ -16,6 +16,9 @@ font-size = 9
 adjust-cell-height = 15%
 font-thicken = true
 
+window-decoration=server
+# window-decoration=none
+
 window-padding-x = 0
 window-padding-y = 0
 
