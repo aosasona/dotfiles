@@ -2,7 +2,7 @@
 [user]
 	name = Ayodeji O
 	email = 97124713+aosasona@users.noreply.github.com
-	signingKey = 8523063C
+	signingKey = C4443CCE4413B4DF
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
