@@ -2,7 +2,7 @@
 [user]
 	name = Ayodeji O
 	email = 97124713+aosasona@users.noreply.github.com
-	signingKey = C4443CCE4413B4DF
+	signingkey = 7FA1CED4F1D26E93
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -14,7 +14,7 @@
 	username = aosasona
 
 [core]
-	excludesfile = /Users/ayodeji/.gitignore
+	excludesfile = /home/trulyao/.gitignore
 	editor = nvim
   pager = delta
 
@@ -50,18 +50,23 @@
 [diff]
     colorMoved = default
 [gpg]
-	program = /usr/bin/gpg
+	program = /home/linuxbrew/.linuxbrew/bin/gpg
 
 [alias]
 	recent = log -n 20 --date='format:%d/%m at %H:%M' --pretty='format:%Cred%h%Creset %Cgreen(%an %ad)%Creset %s'
-	amend = commit --amend --no-edit
-	find-commit = !"f() { git rev-list -1 --before="$2" ${1-master}; }; f"
+        amend = commit --amend --no-edit
+        find-commit = !"f() { git rev-list -1 --before="$2" ${1-master}; }; f"
 	pmr = push -o merge_request.create -o merge_request.target=develop
-	fixup = !"f() { git commit --fixup "$1" && git rebase -i "${1}~1"; }; f"
-	create = !"f() { git switch develop && git pull && git switch -c "$1"; }; f"
-	lg = log --graph --abbrev-commit --decorate --date=relative --all --pretty=format:'%C(bold blue)%h%Creset - %C(bold green)(%ar)%Creset %C(white)%s%Creset %C(dim white)- %an%Creset %C(bold yellow)%d%Creset'
-	dlog = -c diff.external=difft log --ext-diff
-	dshow = -c diff.external=difft show --ext-diff
-	ddiff = -c diff.external=difft diff
-	show-merged = !"f() { git branch --merged | rg -v '^\\*|develop'; }; f" ; requires ripgrep
-	clean-merged = !"f() { git branch --merged | rg -v '^\\*|develop' | xargs -r git branch -d; }; f" ; requires ripgrep and xargs available
+        fixup = !"f() { git commit --fixup "$1" && git rebase -i "${1}~1"; }; f"
+        create = !"f() { git switch develop && git pull && git switch -c "$1"; }; f"
+        lg = log --graph --abbrev-commit --decorate --date=relative --all --pretty=format:'%C(bold blue)%h%Creset - %C(bold green)(%ar)%Creset %C(white)%s%Creset %C(dim white)- %an%Creset %C(bold yellow)%d%Creset'
+        dlog = -c diff.external=difft log --ext-diff
+        dshow = -c diff.external=difft show --ext-diff
+        ddiff = -c diff.external=difft diff
+        show-merged = !"f() { git branch --merged | rg -v '^\\*|develop'; }; f" ; requires ripgrep
+        clean-merged = !"f() { git branch --merged | rg -v '^\\*|develop' | xargs -r git branch -d; }; f" ; requires ripgrep and xargs available
+	changes-all = "!f() {\n  find . -name .git -print | while read -r gitpath; do\n    repo=\"${gitpath%/.git}\"\n    echo\n    echo \"===== $repo =====\"\n    git -C \"$repo\" status --short\n    git -C \"$repo\" diff --stat\n  done\n}; f"
+	diff-all = "!f() {\n  find . -name .git -print | while read -r gitpath; do\n    repo=\"${gitpath%/.git}\"\n    echo\n    echo \"===== $repo =====\"\n    git -C \"$repo\" diff\n  done\n}; f"
+	status-all = "!f() {\n  find . -name .git -print | while read -r gitpath; do\n    repo=\"${gitpath%/.git}\"\n    echo\n    echo \"===== $repo =====\"\n    git -C \"$repo\" status --short\n  done\n}; f"
+	commit-all = "!f() {\n  msg=\"$1\"\n  yes=\"$2\"\n\n  if [ -z \"$msg\" ]; then\n    echo \"Usage: git commit-all \\\"commit message\\\" [-y]\"\n    exit 1\n  fi\n\n  find . -name .git -print | while read -r gitpath; do\n    repo=\"${gitpath%/.git}\"\n\n    if ! git -C \"$repo\" diff --quiet || ! git -C \"$repo\" diff --cached --quiet; then\n      echo\n      echo \"===== $repo =====\"\n      git -C \"$repo\" status --short\n\n      if [ \"$yes\" != \"-y\" ]; then\n        printf \"Commit this repo? [y/N] \" > /dev/tty\n        read -r answer < /dev/tty\n\n        case \"$answer\" in\n          y|Y|yes|YES) ;;\n          *)\n            echo \"Skipped $repo\"\n            continue\n            ;;\n        esac\n      fi\n\n      git -C \"$repo\" add -A\n      git -C \"$repo\" commit -m \"$msg\"\n    fi\n  done\n}; f"
+	push-all = "!f() {\n  yes=\"$1\"\n\n  find . -name .git -print | while read -r gitpath; do\n    repo=\"${gitpath%/.git}\"\n\n    branch=\"$(git -C \"$repo\" branch --show-current 2>/dev/null)\"\n    if [ -z \"$branch\" ]; then\n      echo\n      echo \"===== $repo =====\"\n      echo \"Skipped: detached HEAD or no current branch\"\n      continue\n    fi\n\n    upstream=\"$(git -C \"$repo\" rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)\"\n\n    echo\n    echo \"===== $repo =====\"\n    git -C \"$repo\" status --short --branch\n\n    if [ \"$yes\" != \"-y\" ]; then\n      printf \"Push this repo? [y/N] \" > /dev/tty\n      read -r answer < /dev/tty\n\n      case \"$answer\" in\n        y|Y|yes|YES) ;;\n        *)\n          echo \"Skipped $repo\"\n          continue\n          ;;\n      esac\n    fi\n\n    if [ -n \"$upstream\" ]; then\n      git -C \"$repo\" push\n    else\n      git -C \"$repo\" push -u origin \"$branch\"\n    fi\n  done\n}; f"
