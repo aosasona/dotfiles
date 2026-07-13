@@ -134,7 +134,7 @@ alias cat='bat'
 alias ls='eza'
 
 # Init starship
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 # autoload -U compinit; compinit
 # source ~/zsh-plugins/fzf-tab/fzf-tab.plugin.zsh
